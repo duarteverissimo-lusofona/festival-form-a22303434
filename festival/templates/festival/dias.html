@@ -1,0 +1,20 @@
+{% extends 'festival/layout.html' %}
+
+{% block content %}
+    
+{% for dia in dias %}
+
+<h2 style="padding:20px; background:{{dia.cor}}; color:black;">{{ dia.data|date:"d M'y" }}</h2>
+
+    {% for concerto in dia.concertos.all %}
+        <article class="card">
+            <a href="{% url 'concerto' concerto.id %}">{{ concerto.banda.nome }} - {{ concerto.hora }} @ {{ concerto.palco }}</a>
+        </article>
+    {% endfor %}
+
+{% endfor %}
+
+
+
+{% endblock %}
+    

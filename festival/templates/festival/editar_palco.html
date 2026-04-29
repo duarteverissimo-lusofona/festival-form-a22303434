@@ -1,0 +1,18 @@
+{% extends 'festival/layout.html' %}
+
+{% block content %}
+<article class="card">
+    <h2>Editar palco</h2>
+    <p><strong>Palco atual:</strong> {{ palco.nome }}</p>
+    <p><strong>Capacidade atual:</strong> {{ palco.capacidade }} pessoas</p>
+    {% if palco.imagem %}
+        <p><img src="{{ palco.imagem.url }}" alt="Imagem do palco {{ palco.nome }}" style="max-width: 360px; width: 100%; border-radius: 8px; border: 1px solid #2b3a55;"></p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" style="display: grid; gap: 12px; max-width: 420px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Guardar</button>
+    </form>
+</article>
+{% endblock %}

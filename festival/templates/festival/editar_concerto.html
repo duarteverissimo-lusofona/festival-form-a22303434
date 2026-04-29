@@ -1,0 +1,14 @@
+{% extends 'festival/layout.html' %}
+
+{% block content %}
+<article class="card">
+    <h2>Editar concerto</h2>
+    <p><strong>Concerto atual:</strong> {{ concerto.banda.nome }} - {{ concerto.dia }} - {{ concerto.hora }}</p>
+
+    <form method="post" style="display: grid; gap: 12px; max-width: 520px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Guardar</button>
+    </form>
+</article>
+{% endblock %}
